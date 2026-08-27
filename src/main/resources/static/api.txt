@@ -1,0 +1,1 @@
+Invoke-RestMethod -Uri "http://localhost:8080/api/user" -Method Post -ContentType "application/json" -Body '{"id": 1, "fname": "John", "lname": "Doe"}'
