@@ -2,6 +2,7 @@
 package com.app.ecom;
 
 import java.util.List;
+import org.springframework.http.HttpStatus;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,14 +27,14 @@ public class UserController {
     }
 
     @PostMapping("api/user")
-    public List<User> createUser(@RequestBody User user){
+    public ResponseEntity<String> createUser(@RequestBody User user){
         userService.addUser(user);
-        return userService.fetchAllUsers();
+        return ResponseEntity.ok("User added Successsfully");
     }
 
     @GetMapping("api/user/{id}")
-    public User createdUser(@PathVariable Long id){
-            return userService.fetchAllUser(id);
+    public ResponseEntity<User> createdUser(@PathVariable Long id){
+            return ResponseEntity.ok(userService.fetchAllUser(id));
     }
 
 }

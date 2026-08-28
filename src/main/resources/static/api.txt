@@ -1,1 +1,28 @@
 Invoke-RestMethod -Uri "http://localhost:8080/api/user" -Method Post -ContentType "application/json" -Body '{"id": 1, "fname": "John", "lname": "Doe"}'
+
+
+
+# 1. Install Java 17 (or replace 17.0.10-ms with 21.0.2-ms if you prefer Java 21)
+sdk install java 17.0.10-ms
+
+# 2. Set it as the current active version
+sdk use java 17.0.10-ms
+
+# 3. Export JAVA_HOME for the current session
+export JAVA_HOME=~/.sdkman/candidates/java/current
+
+# 4. Confirm Maven sees Java 17
+mvn -version
+
+# 1. Automatically detect Java installation path and set JAVA_HOME
+export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
+
+# 2. Verify JAVA_HOME path
+echo $JAVA_HOME
+
+# 3. Check Maven and the active JDK version
+mvn -version
+
+mvn spring-boot:run
+
+https://refactored-space-umbrella-q7wx4qj5q5xq2666r-8080.app.github.dev/swagger-ui/index.html
