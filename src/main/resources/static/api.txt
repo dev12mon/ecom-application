@@ -1,28 +1,24 @@
 Invoke-RestMethod -Uri "http://localhost:8080/api/user" -Method Post -ContentType "application/json" -Body '{"id": 1, "fname": "John", "lname": "Doe"}'
+curl -X GET "http://localhost:8080/api/user" -H "Accept: application/json"
+curl -X POST "http://localhost:8080/api/user" \
+     -H "Content-Type: application/json" \
+     -d '{"name": "Rahul Kumar", "email": "rahul@example.com"}'
 
+curl -X GET "http://localhost:8080/api/user/1" -H "Accept: application/json"
 
-
-# 1. Install Java 17 (or replace 17.0.10-ms with 21.0.2-ms if you prefer Java 21)
-sdk install java 17.0.10-ms
-
-# 2. Set it as the current active version
-sdk use java 17.0.10-ms
-
-# 3. Export JAVA_HOME for the current session
-export JAVA_HOME=~/.sdkman/candidates/java/current
-
-# 4. Confirm Maven sees Java 17
-mvn -version
-
-# 1. Automatically detect Java installation path and set JAVA_HOME
+Bash
 export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
+Step 2: Make it permanent
+Save this configuration into your ~/.bashrc file so every new terminal session loads it automatically:
 
-# 2. Verify JAVA_HOME path
-echo $JAVA_HOME
+Bash
+echo 'export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))' >> ~/.bashrc
+Step 3: Run your Spring Boot application
+Verify Maven works and start your app:
 
-# 3. Check Maven and the active JDK version
+Bash
 mvn -version
+Once mvn -version confirms Java 17, clean and start the project:
 
-mvn spring-boot:run
-
-https://refactored-space-umbrella-q7wx4qj5q5xq2666r-8080.app.github.dev/swagger-ui/index.html
+Bash
+mvn clean spring-boot:run

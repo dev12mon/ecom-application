@@ -2,8 +2,11 @@ package com.app.ecom;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.stereotype.Service;
+// Add these exact lines at the top:
+import java.util.Optional;
+import java.util.stream.Stream; 
+import java.util.stream.Collectors; // (Include this if you are collecting streams to lists)
 
 @Service
 public class UserService {
@@ -21,13 +24,10 @@ public class UserService {
 
     }
 
-    public User fetchAllUser(Long id) {
-        for(User user : userList){
-        if(user.getId().equals(id)){
-                return user;
-            }
-        }
-        return null;
-    }
+   public Optional<User> fetchAllUser(Long id) {
+    return userList.stream()
+                    .filter(user -> user.getId().equals(id)) //  Fixed syntax
+                    .findFirst();
+}
     
 }
