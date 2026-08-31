@@ -8,41 +8,44 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/api/users")
 public class UserController {
 
     private final UserService userService;
-     
 
-    @GetMapping("/api/user")
-    public ResponseEntity<List<User>> getAllUsers(){
-        //return ResponseEntity.ok(userService.fetchAllUsers());
-        return new ResponseEntity<>(userService.fetchAllUsers(), HttpStatus.OK);    
+    @GetMapping
+    public ResponseEntity<List<User>> getAllUsers() {
+        return new ResponseEntity<>(userService.fetchAllUsers(), HttpStatus.OK);
     }
 
-    @PostMapping("api/user")
-    public ResponseEntity<String> createUser(@RequestBody User user){
+    @PostMapping
+    public ResponseEntity<String> createUser(@RequestBody User user) {
         userService.addUser(user);
-        return ResponseEntity.ok("User added Successsfully");
+        return ResponseEntity.ok("User added successfully");
     }
 
-    @GetMapping("api/user/{id}")
-    public ResponseEntity<User> getUser(@PathVariable Long id){
-          /* User user = UserService.fetchAllUser(id);
-           if(user == null){
-            return ResponseEntity.notFound().build();
-           }
-        return ResponseEntity.ok(user);*/
-
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUser(@PathVariable Long id) {
         return userService.fetchAllUser(id)
-                        .map(ResponseEntity::ok)
-                        .orElseGet(retrn ResponseEntity.notFound().build());
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
-
+    @PutMapping("/update/{id}")
+    public ResponseEntity<String> updateUser(@RequestBody User updatedUser , @PathVariable Long id) {
+       boolean isUpdated = userService.updateUser(id, updatedUser);
+       if(isUpdated) {
+        return ResponseEntity.ok("user updated successfully");
+       } else {
+        return ResponseEntity.notFound().build();
+       }
+    }
 }

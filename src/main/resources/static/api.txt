@@ -2,9 +2,14 @@ Invoke-RestMethod -Uri "http://localhost:8080/api/user" -Method Post -ContentTyp
 curl -X GET "http://localhost:8080/api/user" -H "Accept: application/json"
 curl -X POST "http://localhost:8080/api/user" \
      -H "Content-Type: application/json" \
-     -d '{"name": "Rahul Kumar", "email": "rahul@example.com"}'
+     -d '{"id":"1","fname": "Rahul", "lname": "com"}'
 
 curl -X GET "http://localhost:8080/api/user/1" -H "Accept: application/json"
+
+curl -X PUT "http://localhost:8080/user/update/1" \
+     -H "Content-Type: application/json" \
+     -d '{"id": 1, "fname": "Rahul", "lname": "Sharma"}'
+
 
 Bash
 export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
@@ -18,7 +23,21 @@ Verify Maven works and start your app:
 
 Bash
 mvn -version
-Once mvn -version confirms Java 17, clean and start the project:
+mvn -version confirms Java 17, clean and start the project:
 
 Bash
 mvn clean spring-boot:run
+
+# Install Java 17 if you don't have it
+sdk install java 17.0.10-ms
+
+# Set Java 17 as the default for this session
+sdk use java 17.0.10-ms
+export JAVA_HOME=/path/to/your/jdk-17
+export PATH=$JAVA_HOME/bin:$PATH
+java -version
+mvn clean compile
+
+dirname $(dirname $(readlink -f $(which java)))
+export JAVA_HOME=/usr/lib/jvm/msopenjdk-17
+

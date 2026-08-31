@@ -29,5 +29,19 @@ public class UserService {
                     .filter(user -> user.getId().equals(id)) //  Fixed syntax
                     .findFirst();
 }
+
+public Boolean  updateUser(Long id, User user){
+        return userList.stream()
+                .filter(u -> u.getId().equals(id))
+                .findFirst()
+                .map(exitingUser -> {
+                    exitingUser.setFname(user.getFname());
+                    exitingUser.setLname(user.getLname());
+                    return true;
+                })
+                .orElse(false);
+
+
+    }
     
 }
