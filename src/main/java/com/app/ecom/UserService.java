@@ -9,9 +9,40 @@ import java.util.stream.Stream;
 import java.util.stream.Collectors; // (Include this if you are collecting streams to lists)
 
 @Service
+@AllArgsConstructor
 public class UserService {
+    private final UserReppository userRepository;
 
-    private List<User> userList = new ArrayList<User>();
+    public List<User> fetchAllUsers() {
+        return userRepository.findAll();
+    }
+
+    public void  addUser(User user){
+       userRepository.save(user);
+
+    }
+
+   public Optional<User> fetchAllUser(Long id) {
+    return userRepository.findById(id);
+  
+}
+
+public Boolean  updateUser(Long id, User user){
+        return userRepository.findById(id)
+                .map(exitingUser -> {
+                    exitingUser.setFname(user.getFname());
+                    exitingUser.setLname(user.getLname());
+                    userRepository.save(exitingUser);
+                    return true;
+                })
+                .orElse(false);
+
+
+    }
+    
+}
+/***
+ private List<User> userList = new ArrayList<User>();
     private  Long nextId = 1L;
 
     public List<User> fetchAllUsers() {
@@ -42,6 +73,4 @@ public Boolean  updateUser(Long id, User user){
                 .orElse(false);
 
 
-    }
-    
-}
+****/
