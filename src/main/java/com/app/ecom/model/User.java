@@ -15,18 +15,5 @@ import org.hibernate.annotations.UpdateTimestamp;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String fname;
-    private String lname;
-    private String email;
-    private String phone;
-    private UserRole role = UserRole.ADMIN;
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name="address_id", referencedColumnName ="id")
-    private Address address;
-    @CreationTimestamp
-    private LocalDateTime createdDate;
-    @UpdateTimestamp
-    private LocalDateTime updatedDate;
-
-}
+   curl -X GET http://localhost:8080/api/users/1 \
+  -H "Content-Type: application/json"
