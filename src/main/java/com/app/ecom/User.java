@@ -19,4 +19,8 @@ public class User {
     private Long id;
     private String fname;
     private String lname;
+    private String email;
+    private String phone;
+    private UserRole role = UserRole.CUSTOMER;
+
 }
