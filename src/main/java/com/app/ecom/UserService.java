@@ -1,12 +1,21 @@
 package com.app.ecom;
 
-import java.util.ArrayList;
-import java.util.List;
-import org.springframework.stereotype.Service;
 // Add these exact lines at the top:
 import java.util.Optional;
 import java.util.stream.Stream; 
 import java.util.stream.Collectors; // (Include this if you are collecting streams to lists)
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import java.util.Optional;
+import com.app.ecom.UserRepository;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Optional;
+import java.util.stream.Stream;
+import java.util.stream.Collectors;
+import org.springframework.stereotype.Service;
+import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
