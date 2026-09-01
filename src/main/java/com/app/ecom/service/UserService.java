@@ -1,4 +1,4 @@
-package com.app.ecom;
+package com.app.ecom.service;
 
 // Add these exact lines at the top:
 import java.util.Optional;
@@ -7,15 +7,10 @@ import java.util.stream.Collectors; // (Include this if you are collecting strea
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import java.util.Optional;
-import com.app.ecom.UserRepository;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Optional;
-import java.util.stream.Stream;
-import java.util.stream.Collectors;
-import org.springframework.stereotype.Service;
-import lombok.RequiredArgsConstructor;
+import com.app.ecom.model.User;
+import com.app.ecom.repository.UserRepository;
 
 @Service
 @RequiredArgsConstructor

@@ -1,5 +1,5 @@
 
-package com.app.ecom;
+package com.app.ecom.controller;
 
 import java.util.List;
 import org.springframework.http.HttpStatus;
@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
+import com.app.ecom.model.User;
+import com.app.ecom.service.UserService;
 
 @RestController
 @RequiredArgsConstructor
