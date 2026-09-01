@@ -1,4 +1,7 @@
-package com.app.ecom.dto
+package com.app.ecom.dto;
+
+import lombok.Data;
+import com.app.ecom.model.Address;
 
 @Data
 public class UserRequest{ 
