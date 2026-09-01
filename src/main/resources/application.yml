@@ -2,10 +2,14 @@ spring:
   h2:
     console:
       enabled: true
+    datasource:
+      url: jdbc:h2:mem:testdb
   application:
     name: my-application
-  h2:
-    datasource:
-      url: jdbc:h2:mem:test
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+  
 
    

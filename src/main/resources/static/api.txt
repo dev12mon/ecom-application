@@ -1,10 +1,12 @@
-Invoke-RestMethod -Uri "http://localhost:8080/api/user" -Method Post -ContentType "application/json" -Body '{"id": 1, "fname": "John", "lname": "Doe"}'
-curl -X GET "http://localhost:8080/api/user" -H "Accept: application/json"
-curl -X POST "http://localhost:8080/api/user" \
+curl -X GET http://localhost:8080/api/users
+curl -X POST http://localhost:8080/api/users \
      -H "Content-Type: application/json" \
-     -d '{"id":"1","fname": "Rahul", "lname": "com"}'
+     -d '{
+       "fname": "John",
+       "lname": "Doe"
+     }'
 
-curl -X GET "http://localhost:8080/api/user/1" -H "Accept: application/json"
+curl -X GET http://localhost:8080/api/users/1
 
 curl -X PUT "http://localhost:8080/user/update/1" \
      -H "Content-Type: application/json" \

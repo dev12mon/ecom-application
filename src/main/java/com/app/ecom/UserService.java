@@ -15,12 +15,12 @@ import java.util.Optional;
 import java.util.stream.Stream;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class UserService {
-    private final UserReppository userRepository;
+    private final UserRepository userRepository;
 
     public List<User> fetchAllUsers() {
         return userRepository.findAll();
