@@ -1,7 +1,11 @@
+server:
+  forward-headers-strategy: framework
 spring:
   h2:
     console:
       enabled: true
+      settings:
+        web-allow-others: true
   datasource:
     url: jdbc:h2:mem:testdb
   application:
@@ -10,4 +14,3 @@ spring:
     hibernate:
       ddl-auto: create
     show-sql: true
-   
